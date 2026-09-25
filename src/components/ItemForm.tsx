@@ -38,6 +38,9 @@ export function ItemForm({ onSubmit, saving }: ItemFormProps) {
       className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm"
     >
       <h2 className="text-lg font-semibold text-zinc-900">Add item</h2>
+      <p className="mt-1 text-sm text-zinc-500">
+        Capture a task or note for your team.
+      </p>
       <div className="mt-4 flex flex-col gap-3">
         <label className="flex flex-col gap-1 text-sm font-medium text-zinc-700">
           Title
@@ -45,9 +48,9 @@ export function ItemForm({ onSubmit, saving }: ItemFormProps) {
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="rounded-lg border border-zinc-300 px-3 py-2 font-normal text-zinc-900 outline-none focus:border-zinc-900"
+            className="rounded-lg border border-zinc-300 px-3 py-2 font-normal text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"
             disabled={saving}
-            placeholder="e.g. Ship dashboard fix"
+            placeholder="e.g. Review Q3 ops report"
           />
         </label>
         <label className="flex flex-col gap-1 text-sm font-medium text-zinc-700">
@@ -56,7 +59,7 @@ export function ItemForm({ onSubmit, saving }: ItemFormProps) {
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={3}
-            className="rounded-lg border border-zinc-300 px-3 py-2 font-normal text-zinc-900 outline-none focus:border-zinc-900"
+            className="rounded-lg border border-zinc-300 px-3 py-2 font-normal text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"
             disabled={saving}
             placeholder="Optional details"
           />
@@ -69,7 +72,7 @@ export function ItemForm({ onSubmit, saving }: ItemFormProps) {
         <button
           type="submit"
           disabled={saving || !title.trim()}
-          className="self-start rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60"
+          className="self-start rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {saving ? "Saving…" : "Save"}
         </button>

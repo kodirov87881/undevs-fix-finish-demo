@@ -1,5 +1,5 @@
 {
-  "name": "undevs-fix-finish-demo",
+  "name": "northline",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,5 +33,6 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^2.1.9"
-  }
+  },
+  "description": "Operations dashboard for your team"
 }

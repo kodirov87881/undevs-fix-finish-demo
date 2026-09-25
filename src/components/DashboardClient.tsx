@@ -15,23 +15,32 @@ function DashboardContent() {
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-4 py-10">
-      <header className="flex items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">
-            Dashboard
-          </h1>
-          <p className="text-sm text-zinc-500">
-            Signed in as {user?.email ?? "…"}
+      <header className="flex items-center justify-between gap-4 rounded-xl border border-zinc-200 bg-white px-5 py-4 shadow-sm">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold tracking-wide text-zinc-900">
+            Northline
+          </p>
+          <p className="mt-0.5 truncate text-sm text-zinc-500">
+            {user?.email ?? "…"}
           </p>
         </div>
         <button
           type="button"
           onClick={() => void signOut()}
-          className="rounded-lg border border-zinc-300 px-3 py-1.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
+          className="shrink-0 rounded-lg border border-zinc-300 px-3 py-1.5 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50"
         >
           Sign out
         </button>
       </header>
+
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">
+          Dashboard
+        </h1>
+        <p className="mt-1 text-sm text-zinc-500">
+          Manage your items and keep work moving.
+        </p>
+      </div>
 
       <ItemForm onSubmit={createItem} saving={saving} />
 

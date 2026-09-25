@@ -14,9 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UnDevs Fix & Finish Demo",
-  description:
-    "Next.js App Router + Supabase demo showing auth and dashboard fix patterns",
+  title: "Northline",
+  description: "Operations dashboard for your team",
 };
 
 export default function RootLayout({

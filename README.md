@@ -1,8 +1,10 @@
-# UnDevs Fix & Finish Demo
+# Northline
 
-Next.js (App Router) + TypeScript + Tailwind CSS + Supabase demo that implements correct patterns for:
+Operations dashboard for your team.
 
-1. Auth redirect loop after sign-in (wait for session; middleware + client aligned)
+Next.js (App Router) + TypeScript + Tailwind CSS + Supabase application with production-ready patterns for:
+
+1. Auth redirect after sign-in (wait for session; middleware + client aligned)
 2. Dashboard data scoped to the logged-in user (`user_id` filter + RLS)
 3. Session hydration (no flash of logged-out UI)
 4. Token expiration (JWT/expired → `signOut` + redirect to login)
@@ -30,6 +32,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+### Sample account
+
+- Email: `demo@example.com`
+- Password: `Northline-Demo-2026!`
+
 ### Database
 
 Apply the SQL migration in the Supabase SQL editor (or CLI):
@@ -50,7 +57,7 @@ Creates `public.items` with RLS policies so authenticated users can only CRUD th
 
 ## Deploy on Vercel
 
-1. Push this repo to GitHub (already done for the demo).
+1. Push this repo to GitHub.
 2. Import the project in [Vercel](https://vercel.com/new).
 3. Set environment variables:
    - `NEXT_PUBLIC_SUPABASE_URL`
@@ -67,4 +74,4 @@ Creates `public.items` with RLS policies so authenticated users can only CRUD th
 
 ## Docs
 
-See [ROOT_CAUSE_AND_FIXES.md](./ROOT_CAUSE_AND_FIXES.md) for client-facing root-cause analysis of each bug and how this demo fixes it.
+See [ROOT_CAUSE_AND_FIXES.md](./ROOT_CAUSE_AND_FIXES.md) for technical root-cause analysis of auth and dashboard patterns.

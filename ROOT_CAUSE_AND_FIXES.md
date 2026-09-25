@@ -1,6 +1,6 @@
 # Root causes and fixes
 
-Client-facing summary of the bugs this demo addresses and the patterns used to fix them.
+Technical summary of auth and dashboard issues and the patterns used to address them.
 
 ---
 

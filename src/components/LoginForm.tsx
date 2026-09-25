@@ -4,6 +4,9 @@ import { FormEvent, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 
+const SAMPLE_EMAIL = "demo@example.com";
+const SAMPLE_PASSWORD = "Northline-Demo-2026!";
+
 export function LoginForm() {
   const { signIn, signUp, isHydrated, user } = useAuth();
   const router = useRouter();
@@ -55,14 +58,61 @@ export function LoginForm() {
     router.refresh();
   }
 
+  function fillSampleAccount() {
+    setEmail(SAMPLE_EMAIL);
+    setPassword(SAMPLE_PASSWORD);
+    setError(null);
+    setMode("signin");
+  }
+
   return (
     <div className="mx-auto w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">
-      <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">
-        {mode === "signin" ? "Sign in" : "Create account"}
-      </h1>
-      <p className="mt-1 text-sm text-zinc-500">
-        UnDevs Fix &amp; Finish demo — Next.js + Supabase
-      </p>
+      <div className="mb-6">
+        <p className="text-sm font-semibold tracking-wide text-zinc-900">
+          Northline
+        </p>
+        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">
+          {mode === "signin" ? "Sign in" : "Create account"}
+        </h1>
+        <p className="mt-1 text-sm text-zinc-500">
+          Operations dashboard for your team
+        </p>
+      </div>
+
+      <aside
+        className="rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3"
+        aria-label="Sample account"
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+              Sample account
+            </p>
+            <dl className="mt-2 space-y-1 text-sm text-zinc-700">
+              <div className="flex flex-wrap gap-x-2">
+                <dt className="font-medium text-zinc-500">Email</dt>
+                <dd className="font-mono text-xs text-zinc-800 sm:text-sm">
+                  {SAMPLE_EMAIL}
+                </dd>
+              </div>
+              <div className="flex flex-wrap gap-x-2">
+                <dt className="font-medium text-zinc-500">Password</dt>
+                <dd className="font-mono text-xs text-zinc-800 sm:text-sm">
+                  {SAMPLE_PASSWORD}
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <button
+            type="button"
+            onClick={fillSampleAccount}
+            disabled={submitting}
+            className="shrink-0 rounded-lg border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-800 shadow-sm transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Use sample account
+          </button>
+        </div>
+      </aside>
 
       {info && (
         <p
@@ -90,7 +140,7 @@ export function LoginForm() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="rounded-lg border border-zinc-300 px-3 py-2 text-base font-normal text-zinc-900 outline-none focus:border-zinc-900"
+            className="rounded-lg border border-zinc-300 px-3 py-2 text-base font-normal text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"
             disabled={submitting}
           />
         </label>
@@ -105,7 +155,7 @@ export function LoginForm() {
             }
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="rounded-lg border border-zinc-300 px-3 py-2 text-base font-normal text-zinc-900 outline-none focus:border-zinc-900"
+            className="rounded-lg border border-zinc-300 px-3 py-2 text-base font-normal text-zinc-900 outline-none transition focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"
             disabled={submitting}
           />
         </label>

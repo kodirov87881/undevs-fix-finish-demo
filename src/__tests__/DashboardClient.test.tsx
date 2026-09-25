@@ -29,6 +29,22 @@ describe("DashboardClient UI states", () => {
     });
   });
 
+  it("shows Northline header with user email", () => {
+    mockUseItems.mockReturnValue({
+      items: [],
+      loading: false,
+      error: null,
+      saving: false,
+      refetch: vi.fn(),
+      createItem: vi.fn(),
+    });
+
+    render(<DashboardClient />);
+    expect(screen.getByText("Northline")).toBeInTheDocument();
+    expect(screen.getByText("demo@example.com")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /sign out/i })).toBeInTheDocument();
+  });
+
   it("shows loading indicator", () => {
     mockUseItems.mockReturnValue({
       items: [],
@@ -122,6 +138,7 @@ describe("DashboardClient UI states", () => {
 
     render(<DashboardClient />);
     expect(screen.getByText(/checking session/i)).toBeInTheDocument();
-    expect(screen.queryByText(/signed in as/i)).not.toBeInTheDocument();
+    expect(screen.queryByText("demo@example.com")).not.toBeInTheDocument();
+    expect(screen.queryByText("Northline")).not.toBeInTheDocument();
   });
 });
